@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 16,
-    paddingBottom: 40,
+    paddingBottom: 132,
     gap: 14,
   },
   card: {

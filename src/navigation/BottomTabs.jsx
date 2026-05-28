@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import HomeScreen from '../screens/home/HomeScreen';
 import SearchScreen from '../screens/home/SearchScreen';
 import CartScreen from '../screens/cart/CartScreen';
@@ -20,15 +21,19 @@ const tabIcons = {
 
 export default function BottomTabs() {
   const { cartCount } = useCart();
+  const insets = useSafeAreaInsets();
+  const bottomPadding = Math.max(insets.bottom, 24);
 
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+        tabBarHideOnKeyboard: true,
         tabBarActiveTintColor: colors.primary,
         tabBarInactiveTintColor: colors.muted,
-        tabBarStyle: styles.tabBar,
+        tabBarStyle: [styles.tabBar, { height: 60 + bottomPadding, paddingBottom: bottomPadding }],
         tabBarLabelStyle: styles.label,
+        tabBarItemStyle: styles.item,
         tabBarIcon: ({ color, focused }) => (
           <View style={[styles.iconWrap, focused && styles.iconWrapActive]}>
             <Ionicons name={focused ? tabIcons[route.name][1] : tabIcons[route.name][0]} size={20} color={color} />
@@ -51,16 +56,18 @@ export default function BottomTabs() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 72,
-    paddingTop: 8,
-    paddingBottom: 10,
+    paddingTop: 6,
     borderTopWidth: 1,
     borderTopColor: colors.border,
     backgroundColor: colors.white,
   },
+  item: {
+    paddingVertical: 2,
+  },
   label: {
     fontSize: 11,
     fontWeight: '700',
+    marginTop: 0,
   },
   iconWrap: {
     width: 34,

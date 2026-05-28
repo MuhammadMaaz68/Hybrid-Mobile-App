@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   content: {
     padding: 16,
     paddingTop: 0,
-    paddingBottom: 96,
+    paddingBottom: 132,
   },
   productRow: {
     gap: 12,
