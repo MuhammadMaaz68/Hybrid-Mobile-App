@@ -30,7 +30,6 @@ export default function WelcomeScreen({ navigation }) {
       <View style={styles.actions}>
         <CustomButton title="Get Started" onPress={() => navigation.navigate('Login')} />
         <CustomButton title="Create Account" variant="secondary" onPress={() => navigation.navigate('Signup')} />
-        <CustomButton title="Continue as Guest" variant="ghost" loading={authLoading} onPress={guestLogin} />
       </View>
     </SafeAreaView>
   );

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
 import {
   Alert,
   ImageBackground,
@@ -11,13 +12,11 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import CustomButton from '../../components/ui/CustomButton';
 import CustomInput from '../../components/ui/CustomInput';
 import useAuth from '../../hooks/useAuth';
 import colors from '../../theme/colors';
 import { isEmail } from '../../utils/helpers';
-import { DEMO_ACCOUNT } from '../../context/AuthContext';
 
 const groceryImage = require('../../../assets/images/header.png');
 
@@ -81,9 +80,7 @@ export default function LoginScreen({ navigation }) {
               <Text style={styles.forgot}>Forgot Password?</Text>
             </Pressable>
             <CustomButton title="Sign In" loading={authLoading} onPress={submit} />
-            <CustomButton title="Login with Demo Account" variant="secondary" loading={authLoading} onPress={demoLogin} />
             <CustomButton title="Create an Account" variant="secondary" onPress={() => navigation.navigate('Signup')} />
-            <CustomButton title="Continue as Guest" variant="ghost" loading={authLoading} onPress={guestLogin} />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
